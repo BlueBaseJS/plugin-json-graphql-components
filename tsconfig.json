@@ -1,0 +1,7 @@
+{
+	"extends": "@bluebase/code-standards/tsconfig",
+  "compilerOptions": {
+		"outDir": "dist",
+    "strict": true
+  }
+}

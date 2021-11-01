@@ -1,0 +1,47 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules/
+
+# Coverage
+coverage
+
+# Docs
+docs/
+
+# Transpiled files
+web-build/
+build/
+dist/
+
+# VS Code
+.vscode
+!.vscode/tasks.js
+
+# JetBrains IDEs
+.idea/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Misc
+.DS_Store
+
+# Cache
+.cache
+
+# Expo
+.expo
+.expo-shared
+
+# Jest
+.jest
+
+
+./storybook/storyLoader.js

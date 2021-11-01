@@ -1,0 +1,136 @@
+{
+  "name": "@bluebase/plugin-json-graphql-components",
+  "description": "A utility to build pluggable components based on JSON schema!",
+  "author": "BlueEast Team <code@blueeast.com>",
+  "version": "0.0.3",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "repository": "https://github.com/BlueBaseJS/plugin-json-graphql-components",
+  "license": "MIT",
+  "keywords": [],
+  "engines": {
+    "node": ">=8.9"
+  },
+  "remarkConfig": {
+    "plugins": [
+      "remark-preset-lint-recommended"
+    ]
+  },
+  "config": {
+    "react-native-storybook-loader": {
+      "searchDir": [
+        "src"
+      ],
+      "pattern": "**/*.stories.tsx",
+      "outputFile": "./storybook/storyLoader.js"
+    }
+  },
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "clean": "rimraf coverage dist tmp",
+    "build": "run-s clean && run-p build:* && cp -r ./dist/src/* ./dist && rm -r ./dist/src",
+    "build:main": "tsc -p tsconfig.json && babel ./src --out-dir dist --ignore \"**/__tests__\",\"**/__stories__\" --extensions \".ts,.tsx,.js,.jsx\"",
+    "fix": "run-s fix:*",
+    "fix:prettier": "prettier \"src/**/*.ts\" --write",
+    "fix:md": "remark . -o",
+    "fix:lint": "eslint src --ext=ts,tsx --fix .",
+    "test": "run-s build test:*",
+    "test:lint": "eslint src --ext=ts,tsx",
+    "test:prettier": "prettier \"src/**/*.ts\" --list-different",
+    "test:md": "remark . -f",
+    "test:only": "jest --coverage --runInBand",
+    "storybook-native": "NODE_ENV=STORYBOOK_NATIVE expo start",
+    "prestorybook-native": "rnstl",
+    "storybook-native-server": "start-storybook -p 7007",
+    "storybook": "node ./node_modules/@storybook/react/bin/index.js -p 6006 ",
+    "build-storybook": "node ./node_modules/@storybook/react/bin/build.js"
+  },
+  "dependencies": {
+    "@bluebase/component-mapper": "^1.4.0",
+    "@bluebase/components": "^6.4.0",
+    "lodash.get": "^4.4.2",
+    "lodash.isnil": "^4.0.0",
+    "lodash.isstring": "^4.0.1"
+  },
+  "peerDependencies": {
+    "@bluebase/core": "^7.0.0-beta.1",
+    "@bluebase/plugin-apollo": "^4.0.0",
+    "react": "17.0.1"
+  },
+  "devDependencies": {
+    "@apollo/client": "^3.4.16",
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.12.9",
+    "@bluebase/code-standards": "^2.15.0",
+    "@bluebase/core": "^7.0.0-beta.5",
+    "@bluebase/plugin-apollo": "^4.0.0",
+    "@bluebase/plugin-json-schema-components": "^4.0.0-beta.5",
+    "@bluebase/plugin-launcher": "^1.2.0",
+    "@bluebase/plugin-material-ui": "^3.7.2",
+    "@bluebase/plugin-react-native-paper": "^4.0.0-beta.1",
+    "@bluebase/plugin-react-navigation": "^1.7.0",
+    "@bluebase/plugin-react-router": "^1.4.2",
+    "@bluebase/plugin-responsive-grid": "^0.0.7",
+    "@bluebase/plugin-settings-app": "^4.1.2",
+    "@bluebase/plugin-vector-icons": "^0.4.0",
+    "@bluebase/storybook-addon": "^3.0.0",
+    "@expo/webpack-config": "^0.16.6",
+    "@storybook/addon-actions": "^5.3",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-knobs": "^5.3",
+    "@storybook/addon-links": "^5.3",
+    "@storybook/addon-ondevice-actions": "^5.3.23",
+    "@storybook/addon-ondevice-knobs": "^5.3.25",
+    "@storybook/node-logger": "^6.3.12",
+    "@storybook/react": "^6.3.12",
+    "@storybook/react-native": "^5.3.25",
+    "@storybook/react-native-server": "^5.3.23",
+    "@types/enzyme": "^3.10.10",
+    "@types/enzyme-async-helpers": "^0.9.2",
+    "@types/jest": "^27.0.2",
+    "@types/lodash.get": "^4.4.6",
+    "@types/lodash.isnil": "^4.0.6",
+    "@types/lodash.isstring": "^4.0.6",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "~0.64.12",
+    "@types/react-test-renderer": "^17.0.1",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.5",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-istanbul": "^6.1.1",
+    "enzyme": "^3.11.0",
+    "enzyme-async-helpers": "^0.9.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "expo": "^43.0.0",
+    "graphql": "^15.3.0",
+    "jest": "^26.5.3",
+    "jest-enzyme": "^7.1.2",
+    "jsdom": "^18.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-native": "0.64.2",
+    "react-native-storybook-loader": "^2.0.4",
+    "react-native-web": "0.17.1",
+    "react-test-renderer": "^17.0.2",
+    "remark-cli": "^10.0.0",
+    "remark-preset-lint-recommended": "^6.1.1",
+    "run-all": "^1.0.1",
+    "ts-jest": "^26.4.2",
+    "typescript": "~4.3.5",
+    "waait": "^1.0.5"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "useTabs": true,
+    "trailingComma": "es5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
