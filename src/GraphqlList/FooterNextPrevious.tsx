@@ -1,8 +1,7 @@
 import { QueryResult } from '@apollo/client';
 import { Button } from '@bluebase/components';
 import { Theme, useStyles } from '@bluebase/core';
-import get from 'lodash.get';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, ViewStyle } from 'react-native';
 
 import { loadMore } from './loadMore';
@@ -34,24 +33,21 @@ export const FooterNextPrevious = (props: GraphqlListFooterProps) => {
 	const styles = useStyles('GraphqlListFooter', props, defaultProps);
 
 	const connection = mapQueryResultToConnection(result);
-	const hasNextPage = get(connection, 'pageInfo.hasNextPage');
-	const hasPreviousPage = get(connection, 'pageInfo.hasPreviousPage');
-	const startCursor = get(connection, 'pageInfo.startCursor');
+	const hasNextPage = connection.pageInfo.hasNextPage;
+	const hasPreviousPage = connection.pageInfo.hasPreviousPage;
+	const startCursor = connection.pageInfo.startCursor;
 
-	function goToNextPage() {
+	const goToNextPage = useCallback(() => {
 		loadMore(result, props);
-	}
+	}, [result, props]);
 
-	function goToPreviousPage() {
+	const goToPreviousPage = useCallback(() => {
 		loadMore(result, {
 			...props,
-			filter: {
-				...props.filter,
-				after: undefined,
-				before: startCursor,
-			},
+			after: undefined,
+			before: startCursor,
 		});
-	}
+	}, [result, props]);
 
 	return (
 		<View style={[styles.root, style]}>

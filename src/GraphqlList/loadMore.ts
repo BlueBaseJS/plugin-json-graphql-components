@@ -1,5 +1,4 @@
 import { QueryResult } from '@apollo/client';
-import get from 'lodash.get';
 
 import { getQueryVariables } from './getQueryVariables';
 import { getUpdateQuery } from './getUpdateQuery';
@@ -15,8 +14,8 @@ export async function loadMore(result: QueryResult, props: GraphqlListProps) {
 
 	const { mapQueryResultToConnection, itemsPerPage, page, pagination, queryOptions } = props;
 	const connection = mapQueryResultToConnection(result);
-	const pageInfo = get(connection, 'pageInfo', undefined);
-	const endCursor = get(connection, 'pageInfo.endCursor');
+	const pageInfo = connection.pageInfo;
+	const endCursor = connection.pageInfo.endCursor;
 
 	// Abort if
 	if (
@@ -32,14 +31,21 @@ export async function loadMore(result: QueryResult, props: GraphqlListProps) {
 
 	// const dataEdges: GraphqlConnectionEdge[] = get(connection, 'edges', []);
 
-	const filter: QueryVariables['filter'] = { ...props.filter };
+	const inputVariables: QueryVariables = {
+		before: props.before,
+		after: props.after,
+		first: props.first,
+		last: props.last,
+		filter: props.filter,
+		orderBy: props.orderBy,
+	};
 
-	if (!filter.after && !filter.before) {
-		filter.after = endCursor;
+	if (!inputVariables.after && !inputVariables.before) {
+		inputVariables.after = endCursor;
 	}
 
 	// load more queries starting from the cursor of the last (oldest) message
-	const variables = getQueryVariables({ filter }, get(queryOptions, 'variables'), {
+	const variables = getQueryVariables(inputVariables, queryOptions?.variables, {
 		itemsPerPage,
 		page,
 		pagination,

@@ -4,11 +4,6 @@ import React from 'react';
 import { FlatListProps, ListRenderItemInfo } from 'react-native';
 
 export interface QueryVariables {
-	filter?: {
-		// General
-		where?: any;
-		order?: any;
-
 		// Cursor Pagination
 		after?: string;
 		before?: string;
@@ -18,7 +13,9 @@ export interface QueryVariables {
 		// Offset Pagination
 		offset?: number;
 		limit?: number;
-	};
+
+		orderBy?: any;
+		filter?: any;
 }
 
 export interface GraphqlConnectionEdge<T = any> {

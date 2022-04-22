@@ -1,7 +1,6 @@
 import { QueryResult } from '@apollo/client';
 import { PaginationProps } from '@bluebase/components';
 import { getComponent, Theme, useStyles } from '@bluebase/core';
-import get from 'lodash.get';
 import React from 'react';
 import { View, ViewStyle } from 'react-native';
 
@@ -37,7 +36,7 @@ export const FooterNumbered = (props: GraphqlListFooterProps) => {
 	const styles = useStyles('GraphqlListFooter', props, defaultProps);
 
 	const connection = mapQueryResultToConnection(result);
-	const totalCount = get(connection, 'totalCount', 0);
+	const totalCount = connection.totalCount !== undefined ? connection.totalCount : 0;
 	const totalPages = Math.ceil(totalCount / itemsPerPage);
 
 	return (

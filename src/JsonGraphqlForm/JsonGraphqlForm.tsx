@@ -4,7 +4,6 @@ import { StatefulComponent } from '@bluebase/components';
 import { getComponent, Omit, useBlueBase } from '@bluebase/core';
 import { JsonFormProps, JsonFormSchema } from '@bluebase/plugin-json-schema-components';
 import { FormikContextType, FormikHelpers, FormikValues } from 'formik';
-import get from 'lodash.get';
 import React, { useCallback } from 'react';
 
 import { graphqlToFormErrors, noop } from './helpers';
@@ -83,7 +82,7 @@ export function JsonGraphqlForm<Values extends FormikValues>(props: JsonGraphqlF
 		...rest
 	} = props;
 
-	const onChangeFn = get(schema, 'onChange', noop);
+	const onChangeFn = schema.onChange || noop;
 
 	const { mutation, ...mutationOpts } = mutationObj;
 	const [mutate] = useMutation(mutation, mutationOpts);
@@ -143,7 +142,7 @@ export function JsonGraphqlForm<Values extends FormikValues>(props: JsonGraphqlF
 				{...rest}
 				schema={{
 					...schema,
-					fields: get(schema, 'fields', []),
+					fields: schema.fields || [],
 					initialValues,
 					onChange,
 					onSubmit,

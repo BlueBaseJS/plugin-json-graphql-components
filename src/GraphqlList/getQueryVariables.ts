@@ -1,4 +1,3 @@
-import get from 'lodash.get';
 
 import { PaginationType, QueryVariables } from './types';
 
@@ -11,7 +10,7 @@ import { PaginationType, QueryVariables } from './types';
  */
 export function getQueryVariables(
 	input: QueryVariables,
-	variables: any,
+	variables: {[key: string]: any} | any,
 	options: {
 		itemsPerPage: number;
 		pagination?: PaginationType;
@@ -20,38 +19,31 @@ export function getQueryVariables(
 ) {
 	const { itemsPerPage, pagination } = options;
 
-	const filter: QueryVariables['filter'] = {
-		after: get(variables, 'filter.after', undefined),
-		before: get(variables, 'filter.before', undefined),
-		first: get(variables, 'filter.first', undefined),
-		last: get(variables, 'filter.last', undefined),
-		order: get(variables, 'filter.order', undefined),
-		where: get(variables, 'filter.where', undefined),
-
-		...get(input, 'filter', undefined),
-	};
+	const vars: QueryVariables = { ...variables, ...input };
 
 	if (pagination === 'numbered') {
-		filter.limit = itemsPerPage;
-		filter.offset = (get(options, 'page', 1) - 1) * itemsPerPage;
+		const page = options.page !== undefined ? options.page : 1;
 
-		filter.before = undefined;
-		filter.after = undefined;
-		filter.first = undefined;
-		filter.last = undefined;
+		vars.limit = itemsPerPage;
+		vars.offset = (page - 1) * itemsPerPage;
+
+		vars.before = undefined;
+		vars.after = undefined;
+		vars.first = undefined;
+		vars.last = undefined;
 	} else {
-		if (!filter.first && !filter.last) {
-			filter.first = itemsPerPage;
+		if (!vars.first && !vars.last) {
+			vars.first = itemsPerPage;
 		}
 
-		filter.limit = undefined;
-		filter.offset = undefined;
+		vars.limit = undefined;
+		vars.offset = undefined;
 	}
 
 	// remove properties which have undefined values
-	Object.keys(filter).forEach(
-		(key: string) => (filter as any)[key] === undefined && delete (filter as any)[key]
+	Object.keys(vars).forEach(
+		(key: string) => (vars as any)[key] === undefined && delete (vars as any)[key]
 	);
 
-	return { ...variables, filter };
+	return vars;
 }

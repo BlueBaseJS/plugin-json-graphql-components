@@ -1,7 +1,6 @@
 import { FetchMoreOptions, QueryHookOptions, QueryResult, useQuery } from '@apollo/client';
 import { ErrorObserver, Table } from '@bluebase/components';
 import { DocumentNode } from 'graphql';
-import get from 'lodash.get';
 import React from 'react';
 
 import { GraphqlConnection, QueryVariables } from '../GraphqlList';
@@ -67,7 +66,6 @@ export const GraphqlTable = (props: GraphqlTableProps) => {
 		page,
 		onPageChange,
 		loading,
-		filter,
 		query,
 		queryOptions,
 		itemsPerPage,
@@ -82,7 +80,16 @@ export const GraphqlTable = (props: GraphqlTableProps) => {
 		...queryOptions,
 		notifyOnNetworkStatusChange: true,
 		skip: loading,
-		variables: getQueryVariables({ filter }, get(queryOptions, 'variables'), {
+		variables: getQueryVariables({
+			after: props.after,
+			before: props.before,
+			first: props.first,
+			last: props.last,
+			filter: props.filter,
+			orderBy: props.orderBy,
+		},
+		queryOptions?.variables,
+		{
 			itemsPerPage,
 			page,
 			pagination: 'numbered',
@@ -103,7 +110,7 @@ export const GraphqlTable = (props: GraphqlTableProps) => {
 	}
 
 	const connection = mapQueryResultToConnection(result);
-	const totalCount = get(connection, 'totalCount', 0);
+	const totalCount = connection.totalCount || 0;
 
 	const onChange = async (pageNum: number) => {
 		const prevPage = page!;
@@ -134,7 +141,7 @@ export const GraphqlTable = (props: GraphqlTableProps) => {
 					{data.map((item: any, i: number) => {
 						const index = page! * itemsPerPage + i;
 						return (
-							<React.Fragment key={get(item, 'id', index.toString())}>
+							<React.Fragment key={item.id || index.toString()}>
 								{renderRow({ index, item, result })}
 							</React.Fragment>
 						);

@@ -1,7 +1,6 @@
 import { QueryResult, useQuery } from '@apollo/client';
 import { ErrorObserver, FlatList } from '@bluebase/components';
-import get from 'lodash.get';
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { ListRenderItemInfo } from 'react-native';
 
 import { getData } from './getData';
@@ -17,7 +16,6 @@ export const GraphqlList = (props: GraphqlListProps) => {
 		pagination,
 		page,
 		onPageChange,
-		filter,
 		query,
 		queryOptions,
 		itemsPerPage,
@@ -47,7 +45,16 @@ export const GraphqlList = (props: GraphqlListProps) => {
 	const result: QueryResult = useQuery(query, {
 		...queryOptions,
 		notifyOnNetworkStatusChange: true,
-		variables: getQueryVariables({ filter }, get(queryOptions, 'variables'), {
+		variables: getQueryVariables({
+			after: props.after,
+			before: props.before,
+			first: props.first,
+			last: props.last,
+			filter: props.filter,
+			orderBy: props.orderBy,
+		},
+		queryOptions?.variables,
+		{
 			itemsPerPage,
 			page,
 			pagination,
@@ -64,18 +71,20 @@ export const GraphqlList = (props: GraphqlListProps) => {
 	}, [subscribeToMoreOptions]);
 
 	// Used during infinite scroll to auto load more data
-	function onEndReached() {
+	const onEndReached = useCallback(() => {
 		if (pagination === 'infinite') {
 			loadMore(result, { ...props, page });
 		}
-	}
+	}, [pagination, result, props, page]);
 
 	// Render list items
 	function renderItem(info: ListRenderItemInfo<any>) {
 		// Backwards compatibility
 		const renderLoadingItem = props.renderLoadingItem || props.renderItem;
 
-		return get(info, 'item.loading') === true
+		const isLoading = info.item.loading === true;
+
+		return isLoading
 			? renderLoadingItem({ ...info, result })
 			: props.renderItem({ ...info, result });
 	}

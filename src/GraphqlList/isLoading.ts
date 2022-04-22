@@ -1,5 +1,4 @@
 import { NetworkStatus, QueryResult } from '@apollo/client';
-import get from 'lodash.get';
 
 /**
  * Checks if the query is currently in loading state. Moreover also, returns
@@ -16,7 +15,7 @@ export function isLoading(
 		return { loading: true, fetchMore: false };
 	}
 
-	const networkStatus = get(result, 'networkStatus');
+	const networkStatus = result?.networkStatus;
 
 	// If there is no data, show multiple to fill the screen
 	if (networkStatus === NetworkStatus.loading) {
