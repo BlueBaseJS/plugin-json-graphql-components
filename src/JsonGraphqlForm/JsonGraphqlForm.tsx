@@ -104,7 +104,7 @@ export function JsonGraphqlForm<Values extends FormikValues>(props: JsonGraphqlF
 		const { setSubmitting, setErrors } = actions;
 
 		// map values
-		const variables = mapFormValuesToMutationVariables!(values);
+		const variables = await mapFormValuesToMutationVariables!(values);
 
 		try {
 			const mutationResult = await mutate({ variables });

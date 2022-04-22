@@ -1,8 +1,10 @@
 import { createPlugin } from '@bluebase/core';
 
+import { GraphqlList } from './GraphqlList';
+import { GraphqlTable } from './GraphqlTable';
 import { JsonGraphqlForm } from './JsonGraphqlForm';
 
-export * from './JsonGraphqlForm';
+export * from './exports';
 
 export default createPlugin({
 	categories: ['ui'],
@@ -12,6 +14,8 @@ export default createPlugin({
 	version: '0.0.1',
 
 	components: {
+		GraphqlList,
+		GraphqlTable,
 		JsonGraphqlForm,
 	},
 });
