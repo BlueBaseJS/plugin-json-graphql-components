@@ -19,7 +19,10 @@ export function getQueryVariables(
 ) {
 	const { itemsPerPage, pagination } = options;
 
-	const vars: QueryVariables = { ...variables, ...input };
+	const vars: QueryVariables = {
+		...variables,
+		...removeUndefinedKeys(input)
+	};
 
 	if (pagination === 'numbered') {
 		const page = options.page !== undefined ? options.page : 1;
@@ -40,10 +43,15 @@ export function getQueryVariables(
 		vars.offset = undefined;
 	}
 
-	// remove properties which have undefined values
-	Object.keys(vars).forEach(
-		(key: string) => (vars as any)[key] === undefined && delete (vars as any)[key]
+	return removeUndefinedKeys(vars);
+}
+
+function removeUndefinedKeys(obj: any) {
+	const input = { ...obj };
+
+	Object.keys(input).forEach(
+		(key: string) => (input as any)[key] === undefined && delete (input as any)[key]
 	);
 
-	return vars;
+	return input;
 }
