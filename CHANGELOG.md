@@ -1,3 +1,9 @@
+# [1.3.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.2.0...v1.3.0) (2022-04-23)
+
+### Features
+
+*   **GraphqlList:** ListFooterComponent is now optional ([8fe83c7](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/8fe83c7ad2221ba93ea52868dc89fad0910b6c5c))
+
 # [1.2.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.1.0...v1.2.0) (2022-04-23)
 
 ### Features
