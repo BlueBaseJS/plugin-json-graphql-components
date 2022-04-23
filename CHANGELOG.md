@@ -1,3 +1,9 @@
+## [1.3.2](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.3.1...v1.3.2) (2022-04-23)
+
+### Bug Fixes
+
+*   **GraphqlList:** Fixed a bug with query variables ([3aaba05](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/3aaba0597a74c63ea4f4db50e5aa0b3360727a09))
+
 ## [1.3.1](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.3.0...v1.3.1) (2022-04-23)
 
 ### Bug Fixes
