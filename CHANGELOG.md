@@ -1,3 +1,9 @@
+## [1.3.1](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.3.0...v1.3.1) (2022-04-23)
+
+### Bug Fixes
+
+*   **GraphqlList:** Fixed a page loading issue ([ccf03a4](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/ccf03a429904774c76da78f6027b555f09bc9399))
+
 # [1.3.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.2.0...v1.3.0) (2022-04-23)
 
 ### Features
