@@ -34,7 +34,7 @@ export interface GraphqlConnection<T = any> {
 	__typename: string;
 	edges: Array<GraphqlConnectionEdge<T>>;
 	pageInfo: GraphqlConnectionPageInfo;
-	totalCount: number;
+	totalCount?: number;
 }
 
 export type PaginationType = 'infinite' | 'numbered' | 'next-previous';
@@ -74,7 +74,7 @@ export interface GraphqlListProps<ItemProps = any, QueryData = any>
 	/**
 	 * Convert query result to ItemComponent props
 	 */
-	mapQueryResultToListData: (result: QueryResult<QueryData>) => ItemProps[];
+	mapQueryResultToListData?: (result: QueryResult<QueryData>) => ItemProps[];
 
 	/**
 	 * Extract connection from query result
@@ -119,5 +119,5 @@ export interface GraphqlListProps<ItemProps = any, QueryData = any>
 	 */
 	ListComponent?: React.ComponentType<FlatListProps<any> & any>;
 
-	ListFooterComponent: React.ComponentType<any>;
+	ListFooterComponent?: React.ComponentType<any>;
 }

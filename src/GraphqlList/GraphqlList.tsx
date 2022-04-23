@@ -90,6 +90,10 @@ export const GraphqlList = (props: GraphqlListProps) => {
 	}
 
 	function renderFooter() {
+		if (!ListFooterComponent) {
+			return null;
+		}
+
 		return (
 			<ListFooterComponent
 				style={ListFooterComponentStyle}
