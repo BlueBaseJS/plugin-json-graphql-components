@@ -1,3 +1,9 @@
+# [1.2.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.1.0...v1.2.0) (2022-04-23)
+
+### Features
+
+*   **GraphqlList:** mapQueryResultToListData is now optional ([a40ea87](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/a40ea87fddcd3dc37dbffa38ce362a410361d314))
+
 # [1.1.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.0.0...v1.1.0) (2022-04-22)
 
 ### Features
