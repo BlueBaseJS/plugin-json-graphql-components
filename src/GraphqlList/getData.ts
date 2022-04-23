@@ -10,10 +10,22 @@ import { GraphqlListProps } from './types';
  * @param result
  */
 export function getData(props: GraphqlListProps, result: QueryResult): any[] {
-	const { pagination, mapQueryResultToListData, itemsPerPage } = props;
+	const { pagination, mapQueryResultToConnection, mapQueryResultToListData, itemsPerPage } = props;
 
 	const { loading, fetchMore } = isLoading(props.loading, result);
-	const data = mapQueryResultToListData(result);
+
+	let data = [];
+
+	if (mapQueryResultToListData) {
+		data = mapQueryResultToListData(result);
+	}
+	else {
+		const connection = mapQueryResultToConnection(result);
+
+		if (connection) {
+			data = (connection.edges || []).map(edge => edge.node);
+		}
+	}
 
 	// If we are not loading anything right now, return current data
 	if (!loading) {
