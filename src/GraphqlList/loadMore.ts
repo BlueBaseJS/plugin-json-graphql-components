@@ -14,8 +14,8 @@ export async function loadMore(result: QueryResult, props: GraphqlListProps) {
 
 	const { mapQueryResultToConnection, itemsPerPage, page, pagination, queryOptions } = props;
 	const connection = mapQueryResultToConnection(result);
-	const pageInfo = connection.pageInfo;
-	const endCursor = connection.pageInfo.endCursor;
+	const pageInfo = connection?.pageInfo;
+	const endCursor = connection?.pageInfo?.endCursor;
 
 	// Abort if
 	if (
