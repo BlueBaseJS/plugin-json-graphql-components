@@ -4,7 +4,7 @@ import { StatefulComponent } from '@bluebase/components';
 import { getComponent, Omit, useBlueBase } from '@bluebase/core';
 import { JsonFormProps, JsonFormSchema } from '@bluebase/plugin-json-schema-components';
 import { FormikContextType, FormikHelpers, FormikValues } from 'formik';
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import { graphqlToFormErrors, noop } from './helpers';
 
@@ -132,12 +132,34 @@ export function JsonGraphqlForm<Values extends FormikValues>(props: JsonGraphqlF
 		}
 	}
 
-	/**
-	 * Renders the main form that executes a mutation on submit
-	 * @param initialValues
-	 */
-	function renderForm(initialValues: JsonFormSchema<Values>['initialValues'] = {} as any) {
+	// If there is no query, we don't need to fetch initial data
+	if (!queryObj) {
+		// Just render the form as is
 		return (
+			<JsonForm
+				{...rest}
+				schema={{
+					...schema,
+					fields: schema.fields || [],
+					initialValues: {},
+					onChange,
+					onSubmit,
+				}}
+			/>
+		);;
+	}
+
+	const { query, ...queryOpts } = queryObj;
+	const queryResult = useQuery(query, queryOpts);
+
+	// If mapQueryDataToInitialValues function returns data,
+	const initialValues = useMemo(() => mapQueryDataToInitialValues!(queryResult.data), [queryResult.data]);
+
+	// then obviously isEmpty should return false.
+	const isEmpty = useCallback(() => !mapQueryDataToInitialValues, [initialValues]);
+
+	return (
+		<StatefulComponent {...queryResult} isEmpty={isEmpty}>
 			<JsonForm
 				{...rest}
 				schema={{
@@ -148,25 +170,6 @@ export function JsonGraphqlForm<Values extends FormikValues>(props: JsonGraphqlF
 					onSubmit,
 				}}
 			/>
-		);
-	}
-
-	// If there is now query, we don't need to fetch initial data
-	if (!queryObj) {
-		// Just render the form as is
-		return renderForm();
-	}
-
-	const { query, ...queryOpts } = queryObj;
-	const queryResult = useQuery(query, queryOpts);
-
-	// If mapQueryDataToInitialValues function returns data,
-	// then obviously isEmpty should return false.
-	const isEmpty = useCallback(() => !mapQueryDataToInitialValues!(queryResult.data), [queryResult]);
-
-	return (
-		<StatefulComponent {...queryResult} isEmpty={isEmpty}>
-			{renderForm(mapQueryDataToInitialValues!(queryResult.data))}
 		</StatefulComponent>
 	);
 }
