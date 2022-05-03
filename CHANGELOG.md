@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.3.2...v1.3.3) (2022-05-03)
+
+### Bug Fixes
+
+*   **GraphqlList:** Fixed broken retry button ([ace2016](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/ace20167c15d15dfe1eaba7b6ae024a79ba5ad46))
+*   **JsonGraphqlForm:** Fixed infinite load issue ([fcf43f4](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/fcf43f4b552678ec2eb7192ab776caf67a1369a5))
+
 ## [1.3.2](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.3.1...v1.3.2) (2022-04-23)
 
 ### Bug Fixes
