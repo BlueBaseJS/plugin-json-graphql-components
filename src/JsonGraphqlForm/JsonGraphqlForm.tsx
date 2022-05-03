@@ -153,10 +153,16 @@ export function JsonGraphqlForm<Values extends FormikValues>(props: JsonGraphqlF
 	const queryResult = useQuery(query, queryOpts);
 
 	// If mapQueryDataToInitialValues function returns data,
-	const initialValues = useMemo(() => mapQueryDataToInitialValues!(queryResult.data), [queryResult.data]);
+	const initialValues = useMemo(
+		() => mapQueryDataToInitialValues!(queryResult.data),
+		[queryResult.data, mapQueryDataToInitialValues]
+	);
 
 	// then obviously isEmpty should return false.
-	const isEmpty = useCallback(() => !mapQueryDataToInitialValues, [initialValues]);
+	const isEmpty = useCallback(
+		() => !mapQueryDataToInitialValues,
+		[initialValues, mapQueryDataToInitialValues]
+	);
 
 	return (
 		<StatefulComponent {...queryResult} isEmpty={isEmpty}>
