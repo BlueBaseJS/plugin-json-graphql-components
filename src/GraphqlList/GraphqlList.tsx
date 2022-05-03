@@ -104,9 +104,13 @@ export const GraphqlList = (props: GraphqlListProps) => {
 		);
 	}
 
+	const onRetry = useCallback(() => {
+		result.refetch();
+	}, [result]);
+
 	// Render List
 	return (
-		<ErrorObserver error={result.error} retry={result.refetch}>
+		<ErrorObserver error={result.error} retry={onRetry}>
 			<ListComponent
 				data={getData(props, result)}
 				onEndReached={onEndReached}
