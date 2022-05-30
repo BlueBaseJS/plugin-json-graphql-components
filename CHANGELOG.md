@@ -1,3 +1,9 @@
+## [1.3.4](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.3.3...v1.3.4) (2022-05-30)
+
+### Bug Fixes
+
+*   Fixed typings in GraphqlList ([3684915](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/368491560b71b1912f1dbe91a19094608930aeff))
+
 ## [1.3.3](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.3.2...v1.3.3) (2022-05-03)
 
 ### Bug Fixes
