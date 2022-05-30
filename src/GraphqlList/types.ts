@@ -79,7 +79,7 @@ export interface GraphqlListProps<ItemProps = any, QueryData = any>
 	/**
 	 * Extract connection from query result
 	 */
-	mapQueryResultToConnection: (result: QueryResult<QueryData>) => GraphqlConnection;
+	mapQueryResultToConnection: (result: QueryResult<QueryData>) => GraphqlConnection | undefined | null;
 
 	/**
 	 * Function called by GraphQL's fetchMore function

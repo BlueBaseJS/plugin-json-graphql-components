@@ -33,9 +33,9 @@ export const FooterNextPrevious = (props: GraphqlListFooterProps) => {
 	const styles = useStyles('GraphqlListFooter', props, defaultProps);
 
 	const connection = mapQueryResultToConnection(result);
-	const hasNextPage = connection.pageInfo.hasNextPage;
-	const hasPreviousPage = connection.pageInfo.hasPreviousPage;
-	const startCursor = connection.pageInfo.startCursor;
+	const hasNextPage = !!connection?.pageInfo.hasNextPage;
+	const hasPreviousPage = !!connection?.pageInfo.hasPreviousPage;
+	const startCursor = connection?.pageInfo.startCursor;
 
 	const goToNextPage = useCallback(() => {
 		loadMore(result, props);

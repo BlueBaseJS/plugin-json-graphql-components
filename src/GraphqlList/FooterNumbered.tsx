@@ -36,7 +36,7 @@ export const FooterNumbered = (props: GraphqlListFooterProps) => {
 	const styles = useStyles('GraphqlListFooter', props, defaultProps);
 
 	const connection = mapQueryResultToConnection(result);
-	const totalCount = connection.totalCount !== undefined ? connection.totalCount : 0;
+	const totalCount = connection?.totalCount !== undefined ? connection.totalCount : 0;
 	const totalPages = Math.ceil(totalCount / itemsPerPage);
 
 	return (
