@@ -1,6 +1,7 @@
 import { createPlugin } from '@bluebase/core';
 
 import { GraphqlList } from './GraphqlList';
+import { GraphqlListCarousel } from './GraphqlListCarousel';
 import { GraphqlTable } from './GraphqlTable';
 import { JsonGraphqlForm } from './JsonGraphqlForm';
 import { VERSION } from './version';
@@ -16,6 +17,7 @@ export default createPlugin({
 
 	components: {
 		GraphqlList,
+		GraphqlListCarousel,
 		GraphqlTable,
 		JsonGraphqlForm,
 	},
