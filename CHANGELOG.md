@@ -1,3 +1,9 @@
+# [1.4.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.3.4...v1.4.0) (2022-05-31)
+
+### Features
+
+*   **GraphqlList:** Added GraphqlListRenderItemInfo type ([d8bf554](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/d8bf554b67f5bb1fcfdc2f1778daf632f6022eba))
+
 ## [1.3.4](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.3.3...v1.3.4) (2022-05-30)
 
 ### Bug Fixes
