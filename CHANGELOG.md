@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.4.0...v1.5.0) (2022-05-31)
+
+### Features
+
+*   Added ApolloError components ([e93891d](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/e93891d8275195d127ba9224e05151cec9554e07))
+*   **GraphqlListCarousel:** Added new component ([42db244](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/42db244707908d76d8b5ba30b0a47f159ebedd55))
+
 # [1.4.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.3.4...v1.4.0) (2022-05-31)
 
 ### Features
