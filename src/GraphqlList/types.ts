@@ -39,6 +39,9 @@ export interface GraphqlConnection<T = any> {
 
 export type PaginationType = 'infinite' | 'numbered' | 'next-previous';
 
+export type GraphqlListRenderItemInfo<ItemProps = any, QueryData = any> =
+ListRenderItemInfo<ItemProps> & { result: QueryResult<QueryData> };
+
 export interface GraphqlListProps<ItemProps = any, QueryData = any>
 	extends QueryVariables,
 		Omit<FlatListProps<ItemProps>, 'data' | 'renderItem'> {
@@ -107,11 +110,11 @@ export interface GraphqlListProps<ItemProps = any, QueryData = any>
 	subscribeToMoreOptions?: SubscribeToMoreOptions<QueryData>;
 
 	renderItem: (
-		info: ListRenderItemInfo<ItemProps> & { result: QueryResult<QueryData> }
+		info: GraphqlListRenderItemInfo<ItemProps, QueryData>
 	) => React.ReactElement | null;
 
 	renderLoadingItem?: (
-		info: ListRenderItemInfo<ItemProps> & { result: QueryResult<QueryData> }
+		info: GraphqlListRenderItemInfo<ItemProps, QueryData>
 	) => React.ReactElement | null;
 
 	/**
