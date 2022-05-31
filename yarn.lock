@@ -1273,7 +1273,7 @@
     deepmerge "^3.2.0"
     tslib "^1.9.3"
 
-"@bluebase/components@^5.15.3":
+"@bluebase/components@^5.15.3", "@bluebase/components@^5.20.0":
   version "5.25.1"
   resolved "https://registry.yarnpkg.com/@bluebase/components/-/components-5.25.1.tgz#e869fc95686e34e11970b7fafae2948d2cf71908"
   integrity sha512-PTD/5J33hBffOgUa2sbIPoN3pV6aiAwJuwa2AFfPbmwzR+ewm9F/2jSfjgZuW3k+89k+0WCk81lSZytXNzRHoQ==
@@ -1407,6 +1407,15 @@
     "@bluebase/components" "^4.1.1"
     deepmerge "^3.2.0"
     tslib "^1.9.3"
+
+"@bluebase/plugin-rn-placeholder@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@bluebase/plugin-rn-placeholder/-/plugin-rn-placeholder-1.2.0.tgz#d4548c0cb026be087941aa81c304eb56c81c8bfa"
+  integrity sha512-0MqqPN1rqhofgHRCyr+sYIQ2Q57SPpVzP7uOb7bMMRMrfmckd7UJ1Lua+xfL5HXgENJRon5OY/AzVj6Admk/oA==
+  dependencies:
+    "@bluebase/components" "^5.20.0"
+    rn-placeholder "^3.0.0"
+    tslib "^1.10.0"
 
 "@bluebase/plugin-settings-app@^4.1.2":
   version "4.1.2"
@@ -18752,6 +18761,11 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
   dependencies:
     hash-base "^3.0.0"
     inherits "^2.0.1"
+
+rn-placeholder@^3.0.0:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/rn-placeholder/-/rn-placeholder-3.0.3.tgz#98f635b263ee003af2a984eed32d86ade308df35"
+  integrity sha512-EmVeLT8zDcTPilQZ2OHO/IiYUy2gApKGgbshDZBX0C4qxsn0cFATwgwOwyz8O7Vwg1Hul97Ci95hu7d6Js6XMQ==
 
 rst-selector-parser@^2.2.3:
   version "2.2.3"

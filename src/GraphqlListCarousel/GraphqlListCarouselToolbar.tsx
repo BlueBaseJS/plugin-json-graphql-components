@@ -1,11 +1,9 @@
 import { Button, Icon, List, View } from '@bluebase/components';
-import { getComponent, isMobile, useStyles, useTheme } from '@bluebase/core';
+import { isMobile, useStyles, useTheme } from '@bluebase/core';
 import React from 'react';
 import { TextStyle, ViewStyle } from 'react-native';
 
-import { SkeletonListItemProps } from '../SkeletonListItem';
-
-const SkeletonListItem = getComponent<SkeletonListItemProps>('SkeletonListItem');
+import { PlaceholderListItem } from '../imports';
 
 export interface GraphqlListCarouselToolbarStyles {
 	toolbar: ViewStyle;
@@ -45,7 +43,7 @@ export const GraphqlListCarouselToolbar = (props: GraphqlListCarouselToolbarProp
 	const { theme } = useTheme();
 
 	if (loading) {
-		return <SkeletonListItem styles={{ title: { width: '80%' } }} />;
+		return <PlaceholderListItem />;
 	}
 
 	const styles = useStyles<GraphqlListCarouselToolbarStyles>('GraphqlListCarouselToolbar', props, {
