@@ -141,7 +141,7 @@ export function JsonGraphqlForm<Values extends FormikValues>(props: JsonGraphqlF
 				schema={{
 					...schema,
 					fields: schema.fields || [],
-					initialValues: {},
+					initialValues: schema.initialValues || {},
 					onChange,
 					onSubmit,
 				}}
@@ -154,8 +154,10 @@ export function JsonGraphqlForm<Values extends FormikValues>(props: JsonGraphqlF
 
 	// If mapQueryDataToInitialValues function returns data,
 	const initialValues = useMemo(
-		() => mapQueryDataToInitialValues!(queryResult.data),
-		[queryResult.data, mapQueryDataToInitialValues]
+		() => mapQueryDataToInitialValues
+			? mapQueryDataToInitialValues(queryResult.data)
+			: schema.initialValues,
+		[queryResult.data, mapQueryDataToInitialValues, schema.initialValues]
 	);
 
 	// then obviously isEmpty should return false.
@@ -183,7 +185,6 @@ export function JsonGraphqlForm<Values extends FormikValues>(props: JsonGraphqlF
 JsonGraphqlForm.displayName = 'JsonGraphqlForm';
 JsonGraphqlForm.defaultProps = {
 	mapFormValuesToMutationVariables: noop,
-	mapQueryDataToInitialValues: noop,
 	onError: noop,
 	onSuccess: noop,
 };
