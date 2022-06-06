@@ -1,3 +1,9 @@
+# [1.6.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.5.0...v1.6.0) (2022-06-06)
+
+### Features
+
+*   **JsonGraphqlForm:** Doesn't ignore schema.initialValues anymore ([c7e8d96](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/c7e8d965ffeca25e5318fb0cc345ed1cddd87563))
+
 # [1.5.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.4.0...v1.5.0) (2022-05-31)
 
 ### Features
