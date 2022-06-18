@@ -1,10 +1,14 @@
 import { BlueBase, BootOptions, createPlugin } from '@bluebase/core';
 
 import { withApolloError } from './ApolloError';
+import { ForbiddenError } from './ForbiddenError';
 import { GraphqlList } from './GraphqlList';
 import { GraphqlListCarousel } from './GraphqlListCarousel';
 import { GraphqlTable } from './GraphqlTable';
 import { JsonGraphqlForm } from './JsonGraphqlForm';
+import { NetworkError } from './NetworkError';
+import { NotFoundError } from './NotFoundError';
+import { UnauthenticatedError } from './UnauthenticatedError';
 import { VERSION } from './version';
 
 export * from './exports';
@@ -24,10 +28,14 @@ export default createPlugin({
 	},
 
 	components: {
+		ForbiddenError,
 		GraphqlList,
 		GraphqlListCarousel,
 		GraphqlTable,
 		JsonGraphqlForm,
+		NetworkError,
+		NotFoundError,
+		UnauthenticatedError,
 	},
 
 	filters: {
