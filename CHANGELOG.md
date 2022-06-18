@@ -1,3 +1,9 @@
+## [1.6.1](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.6.0...v1.6.1) (2022-06-18)
+
+### Bug Fixes
+
+*   Registered Error components ([258f783](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/258f783e08f9a1d1566d26c1c00b6bb52eb72813))
+
 # [1.6.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.5.0...v1.6.0) (2022-06-06)
 
 ### Features
