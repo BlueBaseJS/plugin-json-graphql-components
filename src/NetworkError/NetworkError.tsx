@@ -9,6 +9,6 @@ export const NetworkError = ({ retry }: ErrorStateProps) => (
 		actionOnPress={retry}
 		actionTitle="Retry"
 		actionProps={{ size: 'small' }}
-		imageSource="NetworkError"
+		imageSource="Error503"
 	/>
 );
