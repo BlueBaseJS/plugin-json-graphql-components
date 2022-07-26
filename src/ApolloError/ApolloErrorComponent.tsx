@@ -52,7 +52,7 @@ export const ApolloErrorComponent = (props: ApolloErrorComponentProps) => {
 			// 404
 			const badUserInput = error.graphQLErrors.find((e) => get(e, 'extensions.code') === 'BAD_USER_INPUT');
 
-			if (notFound) {
+			if (badUserInput) {
 				return <BadUserInputError {...rest} />;
 			}
 		}
