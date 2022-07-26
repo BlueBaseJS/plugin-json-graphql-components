@@ -9,6 +9,6 @@ export const NotFoundError = ({ retry }: ErrorStateProps) => (
 		actionOnPress={retry}
 		actionTitle="Retry"
 		actionProps={{ size: 'small' }}
-		imageSource="NotFoundError"
+		imageSource="Error404"
 	/>
 );

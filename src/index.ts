@@ -1,6 +1,7 @@
 import { BlueBase, BootOptions, createPlugin } from '@bluebase/core';
 
 import { withApolloError } from './ApolloError';
+import { BadUserInputError } from './BadUserInputError';
 import { ForbiddenError } from './ForbiddenError';
 import { GraphqlList } from './GraphqlList';
 import { GraphqlListCarousel } from './GraphqlListCarousel';
@@ -20,14 +21,8 @@ export default createPlugin({
 	name: 'Json GraphQL Components',
 	version: VERSION,
 
-	assets: {
-		// Errors
-		ForbiddenError: require('../assets/forbidden-error.png'),
-		NetworkError: require('../assets/network-error.png'),
-		NotFoundError: require('../assets/404-error.png'),
-	},
-
 	components: {
+		BadUserInputError,
 		ForbiddenError,
 		GraphqlList,
 		GraphqlListCarousel,

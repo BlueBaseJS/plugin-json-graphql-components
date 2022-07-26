@@ -3,6 +3,7 @@ import { getComponent } from '@bluebase/core';
 import get from 'lodash.get';
 import React from 'react';
 
+const BadUserInputError = getComponent('BadUserInputError');
 const ForbiddenError = getComponent('ForbiddenError');
 const NetworkError = getComponent('NetworkError');
 const NotFoundError = getComponent('NotFoundError');
@@ -46,6 +47,13 @@ export const ApolloErrorComponent = (props: ApolloErrorComponentProps) => {
 
 			if (notFound) {
 				return <NotFoundError {...rest} />;
+			}
+
+			// 404
+			const badUserInput = error.graphQLErrors.find((e) => get(e, 'extensions.code') === 'BAD_USER_INPUT');
+
+			if (notFound) {
+				return <BadUserInputError {...rest} />;
 			}
 		}
 	}

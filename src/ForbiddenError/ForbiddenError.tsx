@@ -9,6 +9,6 @@ export const ForbiddenError = ({ retry }: ErrorStateProps) => (
 		actionOnPress={retry}
 		actionTitle="Retry"
 		actionProps={{ size: 'small' }}
-		imageSource="ForbiddenError"
+		imageSource="Error403"
 	/>
 );

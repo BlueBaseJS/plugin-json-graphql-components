@@ -22,7 +22,7 @@ export const UnauthenticatedError = () => {
 				actionOnPress={goToLogoutPage}
 				actionTitle="Login"
 				actionProps={{ size: 'small' }}
-				imageSource="UnauthenticatedError"
+				imageSource="Error403"
 			/>
 		</WaitObserver>
 	);
