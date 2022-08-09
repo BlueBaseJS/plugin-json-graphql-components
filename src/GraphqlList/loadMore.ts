@@ -22,7 +22,7 @@ export async function loadMore(result: QueryResult, props: GraphqlListProps) {
 		// If we don't have pageInfo
 		!pageInfo ||
 		// If there are no more pages in infinite scroll mode
-		(props.pagination !== 'numbered' && !pageInfo.hasNextPage) ||
+		(props.pagination === 'infinite' && !pageInfo.hasNextPage) ||
 		// If we are already in processing a query
 		result.networkStatus < 7
 	) {

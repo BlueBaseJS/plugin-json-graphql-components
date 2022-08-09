@@ -47,7 +47,7 @@ export const FooterNextPrevious = (props: GraphqlListFooterProps) => {
 			after: undefined,
 			before: startCursor,
 		});
-	}, [result, props]);
+	}, [startCursor, result, props]);
 
 	return (
 		<View style={[styles.root, style]}>
