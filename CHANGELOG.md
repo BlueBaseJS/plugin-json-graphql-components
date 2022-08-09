@@ -1,3 +1,9 @@
+## [1.7.1](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.7.0...v1.7.1) (2022-08-09)
+
+### Bug Fixes
+
+*   Fixed an issue where previous button wasnt working in pagination ([595a8d9](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/595a8d9ac78aab96fdac7970ffd5ff86e1f3d664))
+
 # [1.7.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.6.1...v1.7.0) (2022-07-26)
 
 ### Bug Fixes
