@@ -1,3 +1,9 @@
+## [1.7.2](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.7.1...v1.7.2) (2022-08-10)
+
+### Bug Fixes
+
+*   **GraphqlList:** Fixed an issue where sometimes active page is not shown in footer ([5566273](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/55662734d970bfc67cc35c6563e3b7ef9f7c2cbb))
+
 ## [1.7.1](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.7.0...v1.7.1) (2022-08-09)
 
 ### Bug Fixes
