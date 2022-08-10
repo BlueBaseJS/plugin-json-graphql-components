@@ -31,9 +31,13 @@ const defaultProps = (theme: Theme): GraphqlListFooterStyles => ({
 });
 
 export const FooterNumbered = (props: GraphqlListFooterProps) => {
-	const { page, itemsPerPage, result, mapQueryResultToConnection, onPageChange, loading, style } =
+	const { itemsPerPage, result, mapQueryResultToConnection, onPageChange, loading, style } =
 		props;
 	const styles = useStyles('GraphqlListFooter', props, defaultProps);
+
+	const page = props.page && typeof props.page === 'string'
+		? parseInt(props.page as string)
+		: props.page;
 
 	const connection = mapQueryResultToConnection(result);
 	const totalCount = connection?.totalCount !== undefined ? connection.totalCount : 0;
