@@ -1,3 +1,9 @@
+# [1.8.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.7.2...v1.8.0) (2023-09-09)
+
+### Features
+
+*   Expo 49 ([eaa8ecc](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/eaa8eccc401f8f0578a33374475c562939f16cc3))
+
 ## [1.7.2](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.7.1...v1.7.2) (2022-08-10)
 
 ### Bug Fixes
