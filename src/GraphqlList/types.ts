@@ -4,18 +4,18 @@ import React from 'react';
 import { FlatListProps, ListRenderItemInfo } from 'react-native';
 
 export interface QueryVariables {
-		// Cursor Pagination
-		after?: string;
-		before?: string;
-		first?: number;
-		last?: number;
+	// Cursor Pagination
+	after?: string;
+	before?: string;
+	first?: number;
+	last?: number;
 
-		// Offset Pagination
-		offset?: number;
-		limit?: number;
+	// Offset Pagination
+	offset?: number;
+	limit?: number;
 
-		orderBy?: any;
-		filter?: any;
+	orderBy?: any;
+	filter?: any;
 }
 
 export interface GraphqlConnectionEdge<T = any> {
@@ -39,8 +39,10 @@ export interface GraphqlConnection<T = any> {
 
 export type PaginationType = 'infinite' | 'numbered' | 'next-previous';
 
-export type GraphqlListRenderItemInfo<ItemProps = any, QueryData = any> =
-ListRenderItemInfo<ItemProps> & { result: QueryResult<QueryData> };
+export type GraphqlListRenderItemInfo<
+	ItemProps = any,
+	QueryData = any
+> = ListRenderItemInfo<ItemProps> & { result: QueryResult<QueryData> };
 
 export interface GraphqlListProps<ItemProps = any, QueryData = any>
 	extends QueryVariables,
@@ -82,7 +84,9 @@ export interface GraphqlListProps<ItemProps = any, QueryData = any>
 	/**
 	 * Extract connection from query result
 	 */
-	mapQueryResultToConnection: (result: QueryResult<QueryData>) => GraphqlConnection | undefined | null;
+	mapQueryResultToConnection: (
+		result: QueryResult<QueryData>
+	) => GraphqlConnection | undefined | null;
 
 	/**
 	 * Function called by GraphQL's fetchMore function
@@ -109,9 +113,7 @@ export interface GraphqlListProps<ItemProps = any, QueryData = any>
 
 	subscribeToMoreOptions?: SubscribeToMoreOptions<QueryData>;
 
-	renderItem: (
-		info: GraphqlListRenderItemInfo<ItemProps, QueryData>
-	) => React.ReactElement | null;
+	renderItem: (info: GraphqlListRenderItemInfo<ItemProps, QueryData>) => React.ReactElement | null;
 
 	renderLoadingItem?: (
 		info: GraphqlListRenderItemInfo<ItemProps, QueryData>

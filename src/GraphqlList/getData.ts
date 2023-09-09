@@ -18,12 +18,11 @@ export function getData(props: GraphqlListProps, result: QueryResult): any[] {
 
 	if (mapQueryResultToListData) {
 		data = mapQueryResultToListData(result);
-	}
-	else {
+	} else {
 		const connection = mapQueryResultToConnection(result);
 
 		if (connection) {
-			data = (connection.edges || []).map(edge => edge.node);
+			data = (connection.edges || []).map((edge) => edge.node);
 		}
 	}
 

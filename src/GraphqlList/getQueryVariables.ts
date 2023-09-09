@@ -1,4 +1,3 @@
-
 import { PaginationType, QueryVariables } from './types';
 
 /**
@@ -10,7 +9,7 @@ import { PaginationType, QueryVariables } from './types';
  */
 export function getQueryVariables(
 	input: QueryVariables,
-	variables: {[key: string]: any} | any,
+	variables: { [key: string]: any } | any,
 	options: {
 		itemsPerPage: number;
 		pagination?: PaginationType;
@@ -21,7 +20,7 @@ export function getQueryVariables(
 
 	const vars: QueryVariables = {
 		...variables,
-		...removeUndefinedKeys(input)
+		...removeUndefinedKeys(input),
 	};
 
 	if (pagination === 'numbered') {
