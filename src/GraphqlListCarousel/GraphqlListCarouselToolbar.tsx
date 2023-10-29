@@ -32,6 +32,8 @@ export interface GraphqlListCarouselToolbarProps {
 
 	loading?: boolean;
 
+	hasData?: boolean;
+
 	moveBack: () => void;
 	moveNext: () => void;
 
@@ -39,7 +41,7 @@ export interface GraphqlListCarouselToolbarProps {
 }
 
 export const GraphqlListCarouselToolbar = (props: GraphqlListCarouselToolbarProps) => {
-	const { title, description, left, right, loading, moveBack, moveNext } = props;
+	const { title, description, left, right, loading, hasData, moveBack, moveNext } = props;
 	const { theme } = useTheme();
 
 	if (loading) {
@@ -73,19 +75,22 @@ export const GraphqlListCarouselToolbar = (props: GraphqlListCarouselToolbarProp
 			left={left}
 			style={styles.toolbar}
 			right={
-				!isMobile() ? (
-					<View style={styles.buttonContainer}>
-						{right}
-						<Button size="small" style={styles.directionalButton} variant="text" onPress={moveBack}>
-							<Icon name="chevron-left" size={22} style={styles.directionalIcon} />
-						</Button>
-						<Button size="small" style={styles.directionalButton} variant="text" onPress={moveNext}>
-							<Icon name="chevron-right" size={22} style={styles.directionalIcon} />
-						</Button>
-					</View>
-				) : (
-					<View style={styles.buttonContainer}>{right}</View>
-				)
+				!isMobile() ?
+					hasData ? (
+						<View style={styles.buttonContainer}>
+							{right}
+							<Button size="small" style={styles.directionalButton} variant="text" onPress={moveBack}>
+								<Icon name="chevron-left" size={22} style={styles.directionalIcon} />
+							</Button>
+							<Button size="small" style={styles.directionalButton} variant="text" onPress={moveNext}>
+								<Icon name="chevron-right" size={22} style={styles.directionalIcon} />
+							</Button>
+						</View>
+					)
+						: null
+				 : (
+						<View style={styles.buttonContainer}>{right}</View>
+					)
 			}
 		/>
 	);

@@ -1,4 +1,4 @@
-import { View } from '@bluebase/components';
+import { Noop, View } from '@bluebase/components';
 import { Theme } from '@bluebase/core';
 import get from 'lodash.get';
 import React, { useCallback, useRef } from 'react';
@@ -25,6 +25,8 @@ export interface GraphqlListCarouselProps<T = any>
 	 */
 	BaseListComponent?: React.ComponentType<FlatListProps<T>>;
 
+	hideIfEmpty?: boolean;
+
 	style?: ViewStyle;
 	styles?: Partial<GraphqlListCarouselStyles>;
 }
@@ -37,7 +39,9 @@ export const GraphqlListCarousel = (props: GraphqlListCarouselProps) => {
 		right,
 		loading,
 		style,
+		hideIfEmpty,
 		styles: _styles,
+		ListEmptyComponent,
 		BaseListComponent: _BaseListComponent,
 		GraphqlListComponent,
 		...rest
@@ -51,6 +55,14 @@ export const GraphqlListCarousel = (props: GraphqlListCarouselProps) => {
 
 	let numColumns = 6;
 	let index = 0;
+
+	console.log('data', get(list, 'current.props.data', []));
+
+	const data = get(list, 'current.props.data', []);
+	const loadingData = get(list, 'current.props.loading', false);
+	const refreshingData = get(list, 'current.props.refreshing', false);
+
+	const shouldHide = hideIfEmpty && !loadingData && !refreshingData && data.length === 0;
 
 	/**
 	 * Set index next to viewed items
@@ -99,15 +111,19 @@ export const GraphqlListCarousel = (props: GraphqlListCarouselProps) => {
 
 	return (
 		<View style={{ ...styles.root, ...style }}>
-			<GraphqlListCarouselToolbar
-				title={title}
-				description={description}
-				left={left}
-				right={right}
-				loading={loading}
-				moveBack={moveBack}
-				moveNext={moveNext}
-			/>
+			{
+				!shouldHide ? null : (
+					<GraphqlListCarouselToolbar
+						title={title}
+						description={description}
+						left={left}
+						right={right}
+						loading={loading}
+						moveBack={moveBack}
+						moveNext={moveNext}
+					/>
+				)
+			}
 			<GraphqlListComponent
 				horizontal
 				loading={loading}
@@ -117,6 +133,7 @@ export const GraphqlListCarousel = (props: GraphqlListCarouselProps) => {
 				ListComponent={ListWithRef}
 				// placeholderItems={numColumns}
 				{...rest}
+				ListEmptyComponent={shouldHide ? Noop : ListEmptyComponent}
 			/>
 		</View>
 	);
