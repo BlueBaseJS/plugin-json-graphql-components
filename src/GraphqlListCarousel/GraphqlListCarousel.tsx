@@ -57,10 +57,13 @@ export const GraphqlListCarousel = (props: GraphqlListCarouselProps) => {
 	let index = 0;
 
 	const data = get(list, 'current.props.data', []);
-	const loadingData = get(list, 'current.props.loading', false);
+	const loadingData = get(list, 'current.props.loading');
 	const refreshingData = get(list, 'current.props.refreshing', false);
 
-	const shouldHide = hideIfEmpty && !loadingData && !refreshingData && data.length === 0;
+	const shouldHide = hideIfEmpty === true
+		&& loadingData === false
+		&& refreshingData === false
+		&& data.length === 0;
 
 	/**
 	 * Set index next to viewed items
@@ -110,7 +113,7 @@ export const GraphqlListCarousel = (props: GraphqlListCarouselProps) => {
 	return (
 		<View style={{ ...styles.root, ...style }}>
 			{
-				!shouldHide ? null : (
+				shouldHide ? null : (
 					<GraphqlListCarouselToolbar
 						title={title}
 						description={description}
