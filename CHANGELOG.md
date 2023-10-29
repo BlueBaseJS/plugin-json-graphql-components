@@ -1,3 +1,13 @@
+# [1.9.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.8.0...v1.9.0) (2023-10-29)
+
+### Bug Fixes
+
+*   Removed console.log message ([474e846](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/474e84636aea11f4e49d835521c0be6b92e5d9f3))
+
+### Features
+
+*   **GraphqlListCarousel:** Added hideIfEmpty prop ([6cbb91b](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/6cbb91bdaea8bb07ab89bb389ab7afb0d74dd03e))
+
 # [1.8.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.7.2...v1.8.0) (2023-09-09)
 
 ### Features
