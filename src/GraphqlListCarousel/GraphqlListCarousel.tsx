@@ -56,8 +56,6 @@ export const GraphqlListCarousel = (props: GraphqlListCarouselProps) => {
 	let numColumns = 6;
 	let index = 0;
 
-	console.log('data', get(list, 'current.props.data', []));
-
 	const data = get(list, 'current.props.data', []);
 	const loadingData = get(list, 'current.props.loading', false);
 	const refreshingData = get(list, 'current.props.refreshing', false);
