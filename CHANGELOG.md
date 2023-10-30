@@ -1,3 +1,9 @@
+## [1.9.2](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.9.1...v1.9.2) (2023-10-30)
+
+### Bug Fixes
+
+*   Fixed bugs in GraphqlListCarouselToolbar ([fd1d137](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/fd1d137eed36c850b3f65b8684eb4cf1837f7f85))
+
 ## [1.9.1](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.9.0...v1.9.1) (2023-10-29)
 
 ### Bug Fixes
