@@ -1,3 +1,9 @@
+## [1.9.1](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.9.0...v1.9.1) (2023-10-29)
+
+### Bug Fixes
+
+*   Bug fixes in hideIfEmpty logic ([48eafed](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/48eafedb26a5d698decb87db73061219ae0710cb))
+
 # [1.9.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.8.0...v1.9.0) (2023-10-29)
 
 ### Bug Fixes
