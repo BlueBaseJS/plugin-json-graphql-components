@@ -76,18 +76,32 @@ export const GraphqlListCarouselToolbar = (props: GraphqlListCarouselToolbarProp
 			style={styles.toolbar}
 			right={
 				!isMobile() ?
-					hasData ? (
-						<View style={styles.buttonContainer}>
-							{right}
-							<Button size="small" style={styles.directionalButton} variant="text" onPress={moveBack}>
-								<Icon name="chevron-left" size={22} style={styles.directionalIcon} />
-							</Button>
-							<Button size="small" style={styles.directionalButton} variant="text" onPress={moveNext}>
-								<Icon name="chevron-right" size={22} style={styles.directionalIcon} />
-							</Button>
-						</View>
-					)
-						: null
+					<View style={styles.buttonContainer}>
+						{right}
+						{
+							hasData ? (
+								<>
+									<Button
+										size="small"
+										style={styles.directionalButton}
+										variant="text"
+										onPress={moveBack}
+									>
+										<Icon name="chevron-left" size={22} style={styles.directionalIcon} />
+									</Button>
+									<Button
+										size="small"
+										style={styles.directionalButton}
+										variant="text"
+										onPress={moveNext}
+									>
+										<Icon name="chevron-right" size={22} style={styles.directionalIcon} />
+									</Button>
+								</>
+							) : null
+						}
+
+					</View>
 				 : (
 						<View style={styles.buttonContainer}>{right}</View>
 					)

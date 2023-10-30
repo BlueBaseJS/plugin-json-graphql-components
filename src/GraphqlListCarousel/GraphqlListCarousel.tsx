@@ -110,6 +110,7 @@ export const GraphqlListCarousel = (props: GraphqlListCarouselProps) => {
 		return index;
 	}, []);
 
+	// console.log(`shouldHide ${title}`, shouldHide);
 	return (
 		<View style={{ ...styles.root, ...style }}>
 			{
