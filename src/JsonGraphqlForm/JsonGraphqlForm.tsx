@@ -10,9 +10,9 @@ import { graphqlToFormErrors, noop } from './helpers';
 
 const JsonForm = getComponent<JsonFormProps<any>>('JsonForm');
 
-export type mapFormValuesToMutationVariablesFn<Values extends FormikValues> = (
+export type mapFormValuesToMutationVariablesFn<Values extends FormikValues, MutationVariables = any> = (
 	values: Values
-) => any;
+) => MutationVariables;
 export type mapQueryDataToInitialValuesFn<Values extends FormikValues> = (data: any) => Values;
 
 export type JsonGraphqlFormOnErrorFn<Values extends FormikValues> = (
@@ -26,7 +26,12 @@ export type JsonGraphqlFormOnSuccessFn<Values extends FormikValues> = (
 	actions: FormikHelpers<Values>
 ) => void;
 
-export type JsonGraphqlFormProps<Values extends FormikValues> = Omit<
+export type JsonGraphqlFormProps<
+	Values extends FormikValues,
+	MutationData = any,
+	MutationVariables = any,
+	QueryData = any
+> = Omit<
 	JsonFormProps<Values>,
 	'schema'
 > & {
@@ -37,25 +42,25 @@ export type JsonGraphqlFormProps<Values extends FormikValues> = Omit<
 	 * GraphqlMutation component props. This mutation will be executed when
 	 * a form is submitted.
 	 */
-	mutation: Omit<MutationComponentOptions<any, Values>, 'children'>;
+	mutation: Omit<MutationComponentOptions<MutationData, Values>, 'children'>;
 
 	/**
 	 * A function that converts form values to mutation variables.
 	 * By default values are sent as is to the mutation.
 	 */
-	mapFormValuesToMutationVariables?: mapFormValuesToMutationVariablesFn<Values>;
+	mapFormValuesToMutationVariables?: mapFormValuesToMutationVariablesFn<Values, MutationVariables>;
 
 	/**
 	 * GraphqlQuery component props. The result of this query will be used
 	 * as initial values of the form.
 	 */
-	query?: Omit<QueryComponentOptions<any, Values>, 'children'>;
+	query?: Omit<QueryComponentOptions<QueryData, Values>, 'children'>;
 
 	/**
 	 * A function that converts query result to initial form values.
 	 * By detault the result is assumed to be initial values, as is.
 	 */
-	mapQueryDataToInitialValues?: (data: any) => Values;
+	mapQueryDataToInitialValues?: (data: QueryData) => Values;
 
 	onError?: JsonGraphqlFormOnErrorFn<Values>;
 
