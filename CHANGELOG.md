@@ -1,3 +1,9 @@
+# [1.10.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.9.2...v1.10.0) (2023-12-27)
+
+### Features
+
+*   **JsonGraphqlForm:** Improved typings ([998b80d](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/998b80d2b150278879dcfa180d5dc3cc95e60ffc))
+
 ## [1.9.2](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.9.1...v1.9.2) (2023-10-30)
 
 ### Bug Fixes
