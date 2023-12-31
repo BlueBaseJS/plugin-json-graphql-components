@@ -1,7 +1,7 @@
 import { FetchMoreOptions, QueryHookOptions, QueryResult, useQuery } from '@apollo/client';
 import { ErrorObserver, Table } from '@bluebase/components';
 import { DocumentNode } from 'graphql';
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { GraphqlConnection, QueryVariables } from '../GraphqlList';
 import { getQueryVariables } from '../GraphqlList/getQueryVariables';
@@ -76,6 +76,8 @@ export const GraphqlTable = (props: GraphqlTableProps) => {
 		mapQueryResultToConnection,
 	} = props;
 
+	const [retryCount, setRetryCount] = React.useState(0);
+
 	const result: QueryResult = useQuery(query, {
 		...queryOptions,
 		notifyOnNetworkStatusChange: true,
@@ -132,10 +134,15 @@ export const GraphqlTable = (props: GraphqlTableProps) => {
 
 	const data = mapQueryResultToTableData(result);
 
+	const onRetry = useCallback(() => {
+		result.refetch();
+		setRetryCount(retryCount + 1);
+	}, [result, retryCount]);
+
 	// Render List
 	return (
-		<ErrorObserver error={result.error} retry={result.refetch}>
-			<Table>
+		<ErrorObserver error={result.error} retry={onRetry}>
+			<Table key={retryCount}>
 				{renderHeader({ result })}
 				<Table.Body>
 					{data.map((item: any, i: number) => {

@@ -28,6 +28,8 @@ export const GraphqlList = (props: GraphqlListProps) => {
 		...flatListProps
 	} = props;
 
+	const [retryCount, setRetryCount] = React.useState(0);
+
 	if (props.loading) {
 		return (
 			<ListComponent
@@ -106,12 +108,14 @@ export const GraphqlList = (props: GraphqlListProps) => {
 
 	const onRetry = useCallback(() => {
 		result.refetch();
-	}, [result]);
+		setRetryCount(retryCount + 1);
+	}, [result, retryCount]);
 
 	// Render List
 	return (
 		<ErrorObserver error={result.error} retry={onRetry}>
 			<ListComponent
+				key={retryCount}
 				data={getData(props, result)}
 				onEndReached={onEndReached}
 				onRefresh={result.refetch}
