@@ -28,6 +28,7 @@ export const GraphqlList = (props: GraphqlListProps) => {
 		...flatListProps
 	} = props;
 
+	const horizontal = flatListProps.horizontal || false;
 	const [retryCount, setRetryCount] = React.useState(0);
 
 	if (props.loading) {
@@ -111,6 +112,8 @@ export const GraphqlList = (props: GraphqlListProps) => {
 		setRetryCount(retryCount + 1);
 	}, [result, retryCount]);
 
+	const onRefresh = horizontal ? undefined : result.refetch;
+
 	// Render List
 	return (
 		<ErrorObserver error={result.error} retry={onRetry}>
@@ -118,7 +121,7 @@ export const GraphqlList = (props: GraphqlListProps) => {
 				key={retryCount}
 				data={getData(props, result)}
 				onEndReached={onEndReached}
-				onRefresh={result.refetch}
+				onRefresh={onRefresh}
 				refreshing={result.networkStatus === 4}
 				keyExtractor={keyExtractor}
 				{...flatListProps}
