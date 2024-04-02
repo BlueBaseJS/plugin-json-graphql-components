@@ -1,3 +1,9 @@
+## [1.10.2](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.10.1...v1.10.2) (2024-04-02)
+
+### Bug Fixes
+
+*   **GraphqlList:** Disabled pull to refresh on horizontal mode ([75a7c02](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/75a7c020859a0ec31f0d296cf83a86360236025f))
+
 ## [1.10.1](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.10.0...v1.10.1) (2023-12-31)
 
 ### Bug Fixes
