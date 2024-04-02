@@ -1,3 +1,9 @@
+## [1.10.1](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.10.0...v1.10.1) (2023-12-31)
+
+### Bug Fixes
+
+*   Fixed retry button in case of error ([ea09100](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/ea0910054dc7c8168e22b88a935c0b52deb5fccf))
+
 # [1.10.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.9.2...v1.10.0) (2023-12-27)
 
 ### Features
