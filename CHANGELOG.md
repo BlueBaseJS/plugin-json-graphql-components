@@ -1,3 +1,9 @@
+# [1.11.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.10.2...v1.11.0) (2024-04-02)
+
+### Features
+
+*   Updated deps ([6d8d75d](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/6d8d75db594ed216ace35e7b28dd1315862c71bc))
+
 ## [1.10.2](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.10.1...v1.10.2) (2024-04-02)
 
 ### Bug Fixes
