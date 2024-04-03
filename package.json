@@ -51,7 +51,8 @@
     "build-storybook": "node ./node_modules/@storybook/react/bin/build.js"
   },
   "dependencies": {
-    "@bluebase/components": "^8.1.0"
+    "@bluebase/components": "^8.1.0",
+    "lodash.get": "^4.4.2"
   },
   "devDependencies": {
     "@apollo/client": "^3.9.10",
