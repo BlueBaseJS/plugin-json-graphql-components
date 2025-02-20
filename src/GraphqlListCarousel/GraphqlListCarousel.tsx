@@ -29,6 +29,8 @@ export interface GraphqlListCarouselProps<T = any>
 
 	style?: ViewStyle;
 	styles?: Partial<GraphqlListCarouselStyles>;
+	trigger?: boolean;
+	setRefreshing?: any;
 }
 
 export const GraphqlListCarousel = (props: GraphqlListCarouselProps) => {
@@ -44,6 +46,8 @@ export const GraphqlListCarousel = (props: GraphqlListCarouselProps) => {
 		ListEmptyComponent,
 		BaseListComponent: _BaseListComponent,
 		GraphqlListComponent,
+		trigger,
+		setRefreshing,
 		...rest
 	} = props;
 
@@ -135,6 +139,8 @@ export const GraphqlListCarousel = (props: GraphqlListCarouselProps) => {
 				ListComponent={ListWithRef}
 				// placeholderItems={numColumns}
 				{...rest}
+				trigger={trigger}
+				setRefreshing={setRefreshing}
 				ListEmptyComponent={shouldHide ? Noop : ListEmptyComponent}
 			/>
 		</View>

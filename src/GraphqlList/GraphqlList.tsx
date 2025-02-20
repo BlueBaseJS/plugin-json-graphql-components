@@ -2,7 +2,6 @@ import { QueryResult, useQuery } from '@apollo/client';
 import { ErrorObserver, FlatList } from '@bluebase/components';
 import React, { useCallback, useEffect } from 'react';
 import { ListRenderItemInfo } from 'react-native';
-
 import { getData } from './getData';
 import { getQueryVariables } from './getQueryVariables';
 import { GraphqlListFooter } from './GraphqlListFooter';
@@ -13,6 +12,8 @@ import { GraphqlListProps } from './types';
 
 export const GraphqlList = (props: GraphqlListProps) => {
 	const {
+		trigger=false,
+		setRefreshing=null,
 		pagination,
 		page,
 		onPageChange,
@@ -27,9 +28,13 @@ export const GraphqlList = (props: GraphqlListProps) => {
 		subscribeToMoreOptions,
 		...flatListProps
 	} = props;
-
+	
 	const horizontal = flatListProps.horizontal || false;
 	const [retryCount, setRetryCount] = React.useState(0);
+
+	useEffect(()=>{
+		onRetry();
+	},[trigger]);
 
 	if (props.loading) {
 		return (
@@ -108,15 +113,17 @@ export const GraphqlList = (props: GraphqlListProps) => {
 	}
 
 	const onRetry = useCallback(() => {
-		result.refetch();
-		setRetryCount(retryCount + 1);
+		result.refetch().then(() => {
+			setRetryCount(prev=>++prev);
+			setRefreshing?.(false)
+		});
 	}, [result, retryCount]);
 
 	const onRefresh = horizontal ? undefined : result.refetch;
 
 	// Render List
 	return (
-		<ErrorObserver error={result.error} retry={onRetry}>
+		<ErrorObserver key={retryCount} error={result.error} retry={onRetry}>
 			<ListComponent
 				key={retryCount}
 				data={getData(props, result)}
