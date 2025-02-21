@@ -1,3 +1,13 @@
+# [1.12.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.11.2...v1.12.0) (2025-02-21)
+
+### Bug Fixes
+
+*   GraphqlListProps interface update ([180204c](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/180204cf46c09a4b778d7093e4af968241746503))
+
+### Features
+
+*   params add for refresh control support ([a4c7fa8](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/a4c7fa80e0941b639be114be45ddf8331e433070))
+
 ## [1.11.2](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.11.1...v1.11.2) (2024-04-03)
 
 ### Bug Fixes
