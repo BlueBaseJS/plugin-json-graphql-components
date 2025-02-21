@@ -52,6 +52,9 @@ export interface GraphqlListProps<ItemProps = any, QueryData = any>
 	/** Page Number to display */
 	pagination?: PaginationType;
 
+	trigger?: boolean;
+	setRefreshing?: any;
+
 	/**
 	 * Page Number to display. Used for "numbered" and "next-previous" pagination types.
 	 * Starts from 1.
