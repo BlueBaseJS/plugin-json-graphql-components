@@ -1,3 +1,9 @@
+## [1.12.1](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.12.0...v1.12.1) (2025-05-01)
+
+### Bug Fixes
+
+*   activity indicator add & workflow update ([90425ce](https://github.com/BlueBaseJS/plugin-json-graphql-components/commit/90425ce48acc938b2ca7902fa751e130cece5dd1))
+
 # [1.12.0](https://github.com/BlueBaseJS/plugin-json-graphql-components/compare/v1.11.2...v1.12.0) (2025-02-21)
 
 ### Bug Fixes
