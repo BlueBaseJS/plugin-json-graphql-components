@@ -120,10 +120,10 @@ export const GraphqlList = (props: GraphqlListProps) => {
 	}, [result, retryCount]);
 
 	const onRefresh = horizontal ? undefined : result.refetch;
-
+	
 	// Render List
 	return (
-		<ErrorObserver key={retryCount} error={result.error} retry={onRetry}>
+		<ErrorObserver key={retryCount} error={result.error} retry={onRetry} networkStatus={result.networkStatus}>
 			<ListComponent
 				key={retryCount}
 				data={getData(props, result)}
